@@ -15,6 +15,7 @@ data class Article(val id: String,
                 Article(readString(), readString(), readString(),
                         readParcelable(Article::class.java.classLoader))  // TODO: ここはUserじゃなくていい？
             }
+
             override fun newArray(size: Int): Array<Article?> = arrayOfNulls(size)
         }
     }

@@ -7,7 +7,7 @@ import android.widget.BaseAdapter
 import sample.qiitaclient.model.Article
 import sample.qiitaclient.view.ArticleView
 
-class ArticleListAdapter(private val context: Context): BaseAdapter() {
+class ArticleListAdapter(private val context: Context) : BaseAdapter() {
     var articles: List<Article> = emptyList()
     override fun getCount(): Int = articles.size
     override fun getItem(position: Int): Any? = articles[position]
