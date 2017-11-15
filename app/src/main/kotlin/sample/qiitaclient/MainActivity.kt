@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.ListView
 import sample.qiitaclient.model.Article
 import sample.qiitaclient.model.User
-import sample.qiitaclient.view.ArticleView
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,11 +13,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val listAdapter = ArticleListAdapter(applicationContext)
-        listAdapter.articles = listOf(dummyArticle("Kotlin入門", "xxx"),
+        listAdapter.articles = listOf(
+                dummyArticle("Kotlin入門", "xxx"),
                 dummyArticle("Java入門", "yyy"))
 
         val listView: ListView = findViewById<ListView>(R.id.list_view)
         listView.adapter = listAdapter
+        listView.setOnItemClickListener { adapterView, view, position, id ->
+            val article = listAdapter.articles[position]
+            ArticleActivity.intent(this, article).let { startActivity(it) }
+        }
     }
 
     private fun dummyArticle(title: String, userName: String): Article =
