@@ -17,13 +17,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import sample.qiitaclient.client.ArticleClient
-import sample.qiitaclient.model.Article
-import sample.qiitaclient.model.User
+import javax.inject.Inject
 
 class MainActivity : RxAppCompatActivity() {
 
+    @Inject
+    lateinit var articleClient: ArticleClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (application as QiitaClientApp).component.inject(this)
         setContentView(R.layout.activity_main)
 
         val listView: ListView = findViewById<ListView>(R.id.list_view)
@@ -32,24 +35,23 @@ class MainActivity : RxAppCompatActivity() {
         val searchButton = findViewById<Button>(R.id.search_button)
 
         val listAdapter = ArticleListAdapter(applicationContext)
-//        listAdapter.articles = listOf(
-//                dummyArticle("Kotlin入門", "xxx"),
-//                dummyArticle("Java入門", "yyy"))
         listView.adapter = listAdapter
         listView.setOnItemClickListener { adapterView, view, position, id ->
-            val article = listAdapter.articles[position]
-            ArticleActivity.intent(this, article).let { startActivity(it) }
+//            val article = listAdapter.articles[position]
+//            ArticleActivity.intent(this, article).let { startActivity(it) }
+            val intent = ArticleActivity.intent(this, listAdapter.articles[position])
+            startActivity(intent)
         }
 
-        val gson = GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .create()
-        val retrofit = Retrofit.Builder()
-                .baseUrl("https://qiita.com")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build()
-        val articleClient = retrofit.create(ArticleClient::class.java)
+//        val gson = GsonBuilder()
+//                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+//                .create()
+//        val retrofit = Retrofit.Builder()
+//                .baseUrl("https://qiita.com")
+//                .addConverterFactory(GsonConverterFactory.create(gson))
+//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                .build()
+//        val articleClient = retrofit.create(ArticleClient::class.java)
 
         searchButton.setOnClickListener {
             progressBar.visibility = View.VISIBLE
@@ -70,12 +72,4 @@ class MainActivity : RxAppCompatActivity() {
                     })
         }
     }
-
-    private fun dummyArticle(title: String, userName: String): Article =
-            Article(id = "",
-                    title = title,
-                    url = "https://example.com",
-                    user = User(id = "",
-                            name = userName,
-                            profileImageUrl = "https://qiita-image-store.s3.amazonaws.com/0/14918/profile-images/1473683560"))
 }
