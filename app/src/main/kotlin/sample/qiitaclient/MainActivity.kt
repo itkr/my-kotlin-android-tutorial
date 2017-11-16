@@ -32,9 +32,9 @@ class MainActivity : RxAppCompatActivity() {
         val searchButton = findViewById<Button>(R.id.search_button)
 
         val listAdapter = ArticleListAdapter(applicationContext)
-        listAdapter.articles = listOf(
-                dummyArticle("Kotlin入門", "xxx"),
-                dummyArticle("Java入門", "yyy"))
+//        listAdapter.articles = listOf(
+//                dummyArticle("Kotlin入門", "xxx"),
+//                dummyArticle("Java入門", "yyy"))
         listView.adapter = listAdapter
         listView.setOnItemClickListener { adapterView, view, position, id ->
             val article = listAdapter.articles[position]
