@@ -24,10 +24,16 @@ class ArticleActivity : AppCompatActivity() {
         val webView = findViewById<WebView>(R.id.web_view)
         // TODO: article受取
 //        val article: Article = intent.getParcelableExtra(ARTICLE_EXTRA)
-        val article: Article = Article("dummy_id", "dummy_title", "dummy_url",
-                User("dummy_user_id", "dummy_user_name", "dummy_image_url"))
+        val article: Article = Article(
+                "513318a9b5b92bd56185",
+                "PythonとBeautiful Soupでスクレイピング",
+                "https://qiita.com/itkr/items/513318a9b5b92bd56185",
+                User("itkr",
+                        "itkr",
+                        "https://qiita-image-store.s3.amazonaws.com/0/14918/profile-images/1473683560"))
 
         articleView.setArticle(article)
+        // TODO: 動いてない
         webView.loadUrl(article.url)
     }
 }
