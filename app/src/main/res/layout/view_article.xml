@@ -16,7 +16,7 @@
     <TextView
         android:id="@+id/title_text_view"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_toEndOf="@id/profile_image_view"
         android:ellipsize="end"
@@ -28,7 +28,7 @@
     <TextView
         android:id="@+id/user_name_text_view"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignStart="@id/title_text_view"
         android:layout_below="@id/title_text_view"
         android:layout_marginTop="8dp"
