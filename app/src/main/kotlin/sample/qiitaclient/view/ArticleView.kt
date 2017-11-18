@@ -38,8 +38,11 @@ class ArticleView : FrameLayout {
     fun setArticle(article: Article) {
         titleTextView.text = article.title
         userNameTextView.text = article.user.name
-        Glide.with(context).load(article.user.profileImageUrl).into(profileImageView)
-//        profileImageView.setBackgroundColor(Color.RED)
+        if (article.user.profileImageUrl == "") {
+            profileImageView.setBackgroundColor(Color.GRAY)
+        } else {
+            Glide.with(context).load(article.user.profileImageUrl).into(profileImageView)
+        }
     }
 }
 
