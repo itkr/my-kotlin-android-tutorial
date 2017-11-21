@@ -27,7 +27,6 @@ data class Article(val id: String,
             writeString(id)
             writeString(title)
             writeString(url)
-            writeString(id)
             writeParcelable(user, flags)
         }
     }
