@@ -3,7 +3,7 @@ package sample.qiitaclient.model
 import android.os.Parcel
 import android.os.Parcelable
 
-data class User(val id: String, val name: String, val profileImageUrl: String) : Parcelable {
+data class User(val id: String, val name: String, val profileImageUrl: String = "") : Parcelable {
     companion object {
         @JvmField
         val CREATOR: Parcelable.Creator<User> = object : Parcelable.Creator<User> {

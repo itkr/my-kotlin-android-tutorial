@@ -14,7 +14,6 @@ class ArticleActivity : AppCompatActivity() {
         private const val ARTICLE_EXTRA: String = "article"
         fun intent(context: Context, article: Article): Intent =
                 Intent(context, ArticleActivity::class.java).putExtra(ARTICLE_EXTRA, article)
-        // Memo: ここまではarticleが入ってる
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +27,9 @@ class ArticleActivity : AppCompatActivity() {
                 "513318a9b5b92bd56185",
                 "PythonとBeautiful Soupでスクレイピング",
                 "https://qiita.com/itkr/items/513318a9b5b92bd56185",
-                User("itkr",
-                        "itkr",
-                        "https://qiita-image-store.s3.amazonaws.com/0/14918/profile-images/1473683560"))
+                User("itkr", "itkr", ""))
 
         articleView.setArticle(article)
-        // TODO: 動いてない
         webView.loadUrl(article.url)
     }
 }

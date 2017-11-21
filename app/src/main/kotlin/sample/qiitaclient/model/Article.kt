@@ -13,7 +13,7 @@ data class Article(val id: String,
         val CREATOR: Parcelable.Creator<Article> = object : Parcelable.Creator<Article> {
             override fun createFromParcel(source: Parcel): Article = source.run {
                 Article(readString(), readString(), readString(),
-                        readParcelable(Article::class.java.classLoader))  // TODO: ここはUserじゃなくていい？
+                        readParcelable(User::class.java.classLoader))
             }
 
             override fun newArray(size: Int): Array<Article?> = arrayOfNulls(size)
