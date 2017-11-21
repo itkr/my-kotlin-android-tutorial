@@ -27,9 +27,9 @@ class ArticleView : FrameLayout {
                 defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
 
 
-    val profileImageView: ImageView by bindView<ImageView>(R.id.profile_image_view)
-    val titleTextView: TextView by bindView<TextView>(R.id.title_text_view)
-    val userNameTextView: TextView by bindView<TextView>(R.id.user_name_text_view)
+    private val profileImageView: ImageView by bindView<ImageView>(R.id.profile_image_view)
+    private val titleTextView: TextView by bindView<TextView>(R.id.title_text_view)
+    private val userNameTextView: TextView by bindView<TextView>(R.id.user_name_text_view)
 
     init {
         LayoutInflater.from(context).inflate(R.layout.view_article, this)
